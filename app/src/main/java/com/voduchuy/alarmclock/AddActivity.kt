@@ -23,7 +23,6 @@ class AddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        alarmManager= getSystemService(ALARM_SERVICE) as AlarmManager
         binding.setAlarm.setOnClickListener {
             setAlarm()
         }
@@ -34,7 +33,7 @@ class AddActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun setAlarm() {
-        var time :Long=0
+        alarmManager= getSystemService(ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmReceiver::class.java)
         val calendar: Calendar = Calendar.getInstance()
         calendar.set(calendar.get(Calendar.YEAR),
@@ -43,11 +42,10 @@ class AddActivity : AppCompatActivity() {
             binding.timePacked.hour,
             binding.timePacked.minute,
             0)
-        pendingIntent=PendingIntent.getBroadcast(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
+        pendingIntent=PendingIntent.getBroadcast(this,0,intent,0)
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.timeInMillis,AlarmManager.INTERVAL_DAY,pendingIntent)
-       // time = (calendar.getTimeInMillis() - (calendar.getTimeInMillis() % 60000));
-       Toast.makeText(applicationContext,"Đã hẹn giờ thành công  ",Toast.LENGTH_SHORT).show()
-        Log.d("AAA","${calendar.getTimeInMillis()}")
+       Toast.makeText(applicationContext,"Đã hẹn giờ thành công ${calendar.timeInMillis} ",Toast.LENGTH_SHORT).show()
+        Log.d("AAA","${calendar.timeInMillis}")
 
 
     }
