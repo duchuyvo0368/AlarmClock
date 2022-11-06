@@ -17,7 +17,8 @@ import java.util.Calendar
 class AddActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddBinding
     private lateinit var pendingIntent: PendingIntent
-    private lateinit var alarmManager:AlarmManager
+    private lateinit var alarmManager: AlarmManager
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,25 +30,34 @@ class AddActivity : AppCompatActivity() {
     }
 
 
-
-
     @RequiresApi(Build.VERSION_CODES.M)
     private fun setAlarm() {
-        alarmManager= getSystemService(ALARM_SERVICE) as AlarmManager
+        alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmReceiver::class.java)
         val calendar: Calendar = Calendar.getInstance()
-        calendar.set(calendar.get(Calendar.YEAR),
+        calendar.set(
+            calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH),
             binding.timePacked.hour,
             binding.timePacked.minute,
-            0)
-        pendingIntent=PendingIntent.getBroadcast(this,0,intent,0)
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.timeInMillis,AlarmManager.INTERVAL_DAY,pendingIntent)
-       Toast.makeText(applicationContext,"Đã hẹn giờ thành công ${calendar.timeInMillis} ",Toast.LENGTH_SHORT).show()
-        Log.d("AAA","${calendar.timeInMillis}")
+            0
+        )
+        pendingIntent =
+            PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            10*1000,
+            pendingIntent
+        )
+        Log.d("AAA", "click hẹn giờ")
+        home()
+    }
 
-
+    private fun home() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
 
