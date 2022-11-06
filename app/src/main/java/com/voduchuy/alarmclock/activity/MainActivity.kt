@@ -1,4 +1,4 @@
-package com.voduchuy.alarmclock
+package com.voduchuy.alarmclock.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.addAlarm.setOnClickListener {
-            val intent=Intent(this,AddActivity::class.java)
+            val intent=Intent(this, AddActivity::class.java)
             startActivity(intent)
         }
     }

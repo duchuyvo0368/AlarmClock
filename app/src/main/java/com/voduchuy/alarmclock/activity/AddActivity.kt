@@ -1,17 +1,15 @@
-package com.voduchuy.alarmclock
+package com.voduchuy.alarmclock.activity
 
-import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.voduchuy.alarmclock.databinding.ActivityAddBinding
+import com.voduchuy.alarmclock.services.AlarmReceiver
 import java.util.Calendar
 
 class AddActivity : AppCompatActivity() {

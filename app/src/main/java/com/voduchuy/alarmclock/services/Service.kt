@@ -1,4 +1,4 @@
-package com.voduchuy.alarmclock
+package com.voduchuy.alarmclock.services
 
 import android.app.Notification
 import android.app.Service
