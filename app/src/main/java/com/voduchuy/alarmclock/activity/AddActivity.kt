@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.voduchuy.alarmclock.databinding.ActivityAddBinding
+import com.voduchuy.alarmclock.model.Alarm
 import com.voduchuy.alarmclock.services.AlarmReceiver
 import java.util.Calendar
 
@@ -33,6 +34,7 @@ class AddActivity : AppCompatActivity() {
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmReceiver::class.java)
         val calendar: Calendar = Calendar.getInstance()
+
         calendar.set(
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),

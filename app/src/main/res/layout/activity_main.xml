@@ -8,16 +8,18 @@
     tools:context=".activity.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listAlarm"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
         android:id="@+id/add_Alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="30dp"
-        android:src="@drawable/ic_baseline_add_24"
-        android:layout_height="wrap_content"/>
+        android:src="@drawable/ic_baseline_add_24" />
 
 
 </RelativeLayout>
